@@ -72,4 +72,15 @@ def get_image_pixel_value(image,size):
     img_arr= np.array([[image.getpixel((x,y))[0] for x in range(size)] for y in range(size)])
     img_arr = img_arr.flatten()
     return img_arr
+
+def get_count_of_pixel(arr1,arr2):
+    same=0
+    notsame=0
+    for i in range(len(arr1)):
+        if arr1[i]==arr2[i]:
+            same+=1
+        else:
+            notsame+=1
+    return (same,notsame)
+
     

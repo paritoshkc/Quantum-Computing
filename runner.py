@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 from resizeimage import resizeimage
 from PIL import Image, ImageOps
 import frqi
+import quantum_edge_detection as qed
 # import quantum_edge_detection as qed
 
 
@@ -55,6 +56,13 @@ for i in range(1, len(img)):
 for i in range(len(normalized_image)):
         if normalized_image[i] != 0:
                 frqi.c10mary(qc, 2 * normalized_image[i], format(i, '010b'), img[0], anc2[0], [img[j] for j in range(1,len(img))])
+
+#rotate the image 180 deg
+# qed.quantum_rotate_image(qc)
+
+#Edge Detection 
+# qed.quantum_edge_detection()
+
 qc.measure(img, c[1:12])
 print(qc.depth())
 numOfShots = 1000000
@@ -93,6 +101,11 @@ for i in range(len(normalized_image)):
 # inverse nomalization
 genimg *= size * 255.0
 # genimg = np.sin(genimg)
+
+same,notSame= utils.get_count_of_pixel(img_arr,genimg)
+print(same,notSame)
+percentage= (same/1024)*100
+print ("Total image recovered "+ str(percentage))
 
 # convert type
 genimg = genimg.astype('int')
