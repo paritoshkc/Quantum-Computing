@@ -23,7 +23,6 @@ def quantum_edge_detection(circuit):        #gives you the quantum state where y
     circuit.h(ancilla)
     circuit.x(ancilla)
 
-#/!\ Vertical and horizontal encoding
 
 # circuit.measure(ancilla, clbit)
 
